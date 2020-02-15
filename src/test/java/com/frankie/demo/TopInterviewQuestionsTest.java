@@ -64,6 +64,7 @@ public class TopInterviewQuestionsTest {
     public void question169(){
         int[] nums = {3, 2, 3};
 
+        // Step1: Build HashMap.
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int num: nums){
             if (map.get(num) != null){
@@ -72,6 +73,8 @@ public class TopInterviewQuestionsTest {
                 map.put(num, 1);
             }
         }
+
+        // Step2: Find the majority element.
         int result = 0;
         int count  = 0;
         for (Map.Entry<Integer, Integer> entry: map.entrySet()){
