@@ -1,5 +1,6 @@
 package com.frankie.demo;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -12,7 +13,7 @@ import java.util.Map;
  * @date: 2020/2/14 20:13
  */
 @SpringBootTest
-public class TopInterviewQuestions {
+public class TopInterviewQuestionsTest {
 
     /**
      * Input : [0,1,0,3,12]
@@ -126,5 +127,28 @@ public class TopInterviewQuestions {
             }
         }
         System.out.println(ret);
+    }
+
+
+    /**
+     * Given an array of integers, find if the array contains any duplicates.
+     *
+     * Example 1:
+     * Input: [1,2,3,1]
+     * Output: true
+     *
+     * Example 2:
+     * Input: [1,2,3,4]
+     * Output: false
+     *
+     * Solution2: Using set
+     * https://leetcode.com/problems/contains-duplicate/discuss/61030/Java-HashSet-and-sorting-solutions.
+     */
+    @Test
+    public void question217(){
+        int[] nums = {1, 2, 3, 1};
+//        boolean isDuplicate = ArrayProblems.p217(nums);
+        boolean isDuplicate = ArrayProblems.p217UsingSet(nums);
+        Assert.assertTrue(isDuplicate);
     }
 }
