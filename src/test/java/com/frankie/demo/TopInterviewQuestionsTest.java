@@ -154,4 +154,35 @@ public class TopInterviewQuestionsTest {
         boolean isDuplicate = ArrayProblems.p217UsingSet(nums);
         Assert.assertTrue(isDuplicate);
     }
+
+    
+    /**
+     * 122. Best Time to Buy and Sell Stock II
+     * Say you have an array for which the ith element is the price of a given stock on day i.
+     *
+     * Design an algorithm to find the maximum profit.
+     * You may complete as many transactions as you like
+     * (i.e., buy one and sell one share of the stock multiple times).
+     *
+     * Example 1:
+     * Input: [7,1,5,3,6,4]
+     * Output: 7
+     *
+     * Example 2:
+     * Input: [1,2,3,4,5]
+     * Output: 4
+     */
+    @Test
+    public void question122(){
+//        int[] prices = {7, 1, 5, 3, 6, 4};
+//        int[] prices = {1, 2, 3, 4, 5};
+        int[] prices = {3, 1, 8, 4, 7};
+//        int[] prices = {7, 1, 5, 3};
+//        int[] prices = {7, 1, 5, 6};
+//        int[] prices = {7, 1, 5, 3, 6};
+//        int ret = ArrayProblems.p122(prices);
+//        int ret = ArrayProblems.p122UsingMax(prices);
+        int ret = ArrayProblems.p122UsingResetPoint(prices);
+        Assert.assertEquals(ret, 7);
+    }
 }
