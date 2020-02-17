@@ -1,7 +1,10 @@
 package com.frankie.demo;
 
+import java.util.Arrays;
+import java.util.BitSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.stream.IntStream;
 
 /**
  * @author: Yao Frankie
@@ -80,5 +83,47 @@ public class ArrayProblems {
         }
         profit += max;
         return profit;
+    }
+
+    public static int missingNumber(int[] nums) {
+        Arrays.sort(nums);
+        int length = nums.length;
+
+        for (int i = 0; i <= length; i++){
+            if (i != nums[i]) return i;
+        }
+        return length;
+    }
+
+    /**
+     * https://leetcode.com/problems/missing-number/discuss/69832/1%2B-lines-Ruby-Python-Java-C%2B%2B
+     */
+    public static int missingNumberUsingMath(int[] nums){
+        int length = nums.length;
+        return (length * (length + 1) / 2) - IntStream.of(nums).sum();
+    }
+
+    /**
+     * https://leetcode.com/problems/missing-number/discuss/69832/1%2B-lines-Ruby-Python-Java-C%2B%2B
+     */
+    public static int missingNumberUsingSum(int[] nums){
+        int miss = 0, i = 0;
+        for (int num: nums){
+            miss += ++i - num;
+        }
+        return miss;
+    }
+
+    /**
+     * https://leetcode.com/problems/missing-number/discuss/70030/Using-BitSet-Java
+     */
+    public static int missingNumberUsingBitSet(int[] nums){
+        int n = nums.length, i;
+        BitSet bit = new BitSet();
+        for (i = 0; i < n; i++)
+            bit.set(nums[i]);
+        for (i = 0; i < n; i++)
+            if (!bit.get(i)) break;
+        return i;
     }
 }
