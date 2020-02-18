@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -207,5 +208,28 @@ public class TopInterviewQuestionsTest {
 //        int missingNumber = ArrayProblems.missingNumberUsingSum(nums);
 //        int missingNumber = ArrayProblems.missingNumberUsingBitSet(nums);
         Assert.assertEquals(missingNumber, 2);
+    }
+
+
+    /**
+     * 118. Pascal's Triangle
+     * Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
+     *
+     * Input: 5
+     * Output:
+     * [
+     *      [1],
+     *     [1,1],
+     *    [1,2,1],
+     *   [1,3,3,1],
+     *  [1,4,6,4,1]
+     * ]
+     */
+    @Test
+    public void question118(){
+        int numRows = 5;
+//        List<List<Integer>> result = ArrayProblems.pascalTriangle(numRows);
+        List<List<Integer>> result = ArrayProblems.pascalTriangleUsingFormula(numRows);
+//        System.out.println(result);
     }
 }

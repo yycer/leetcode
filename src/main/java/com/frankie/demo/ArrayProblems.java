@@ -1,9 +1,6 @@
 package com.frankie.demo;
 
-import java.util.Arrays;
-import java.util.BitSet;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 import java.util.stream.IntStream;
 
 /**
@@ -125,5 +122,51 @@ public class ArrayProblems {
         for (i = 0; i < n; i++)
             if (!bit.get(i)) break;
         return i;
+    }
+
+    public static List<List<Integer>> pascalTriangle(int numRows) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (numRows <= 0){
+            return result;
+        } else if (numRows == 1){
+            result.add(Collections.singletonList(1));
+            return result;
+        } else if (numRows == 2){
+            result.add(Collections.singletonList(1));
+            result.add(Arrays.asList(1, 1));
+            return result;
+        } else {
+            result.add(Collections.singletonList(1));
+            result.add(Arrays.asList(1, 1));
+            for (int i = 2; i < numRows; i++){
+                List<Integer> tmp = new ArrayList<>();
+                tmp.add(1);
+                List<Integer> top = result.get(i - 1);
+                for (int j = 0; j < top.size() - 1; j++){
+                    tmp.add(top.get(j) + top.get(j + 1));
+                }
+                tmp.add(1);
+                result.add(tmp);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * num[i][j] = num[i - 1][j - 1] + num[i - 1][j]
+     * https://leetcode.com/problems/pascals-triangle/discuss/38343/Another-accepted-Java-solution
+     */
+    public static List<List<Integer>> pascalTriangleUsingFormula(int numRows) {
+        List<List<Integer>> ret = new ArrayList<>();
+
+        for (int i = 0; i < numRows; i++){
+            ArrayList<Integer> list = new ArrayList<>(Arrays.asList(1));
+            for (int j = 1; j < i; j++){
+                list.add(ret.get(i - 1).get(j - 1) + ret.get(i - 1).get(j));
+            }
+            if (i > 0) list.add(1);
+            ret.add(list);
+        }
+        return ret;
     }
 }
