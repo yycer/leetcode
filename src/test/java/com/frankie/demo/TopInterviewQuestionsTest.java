@@ -232,4 +232,15 @@ public class TopInterviewQuestionsTest {
         List<List<Integer>> result = ArrayProblems.pascalTriangleUsingFormula(numRows);
 //        System.out.println(result);
     }
+
+    /**
+     * 53. Maximum Subarray
+     */
+    @Test
+    public void question53(){
+//        int[] nums = {-2, 1, 3, -7, 3, 6};
+        int[] nums = {-2, -1};
+//        ArrayProblems.maximumSubarray(nums);
+        ArrayProblems.maximumSubarray2(nums);
+    }
 }

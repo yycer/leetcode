@@ -169,4 +169,70 @@ public class ArrayProblems {
         }
         return ret;
     }
+
+    /**
+     * 没有考虑负数的版本。
+     */
+    public static int maximumSubarray(int[] nums) {
+        int tmp = 0, max = 0;
+        for (int n: nums){
+            if ((n + tmp) < 0){
+                tmp = 0;
+            } else {
+                tmp += n;
+            }
+            max = Math.max(tmp, max);
+        }
+        return max;
+    }
+
+    /**
+     * https://leetcode.com/problems/maximum-subarray/discuss/20210/O(n)-Java-solution
+     */
+    public static int maximumSubarray2(int[] nums){
+        int tmp = 0, max = Integer.MIN_VALUE;
+
+        for (int i = 0; i < nums.length; i++){
+            if (tmp < 0){
+                tmp = nums[i];
+            } else {
+                tmp += nums[i];
+            }
+            max = Math.max(tmp, max);
+        }
+        return max;
+    }
+
+    public static int maximumSubarray21(int[] nums){
+        int tmp = 0, max = Integer.MIN_VALUE;
+
+        for (int i = 0; i < nums.length; i++){
+            tmp = tmp < 0 ? nums[i] : (tmp + nums[i]);
+            max = Math.max(tmp, max);
+        }
+        return max;
+    }
+
+    public static int maximumSubarray3(int[] nums){
+        int tmp = 0, max = nums[0];
+        for (int n: nums){
+            if (tmp < 0) tmp = 0;
+            tmp += n;
+            max = Math.max(tmp, max);
+        }
+        return max;
+    }
+
+
+    /**
+     * https://leetcode.com/problems/maximum-subarray/discuss/20470/Beat-90-Fast-Java-Solution
+     */
+    public static int maximumSubarray4(int[] nums){
+       int tmp = nums[0], max = tmp;
+       for (int i = 1; i < nums.length; i++){
+           tmp = Math.max(nums[i], nums[i] + tmp);
+           max = Math.max(tmp, max);
+       }
+       return max;
+    }
 }
