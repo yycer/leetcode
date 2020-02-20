@@ -235,4 +235,13 @@ public class ArrayProblems {
        }
        return max;
     }
+
+    public static int p26(int[] nums) {
+        return (int) IntStream.of(nums).distinct().count();
+    }
+
+    public static List<List<Integer>> p78(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        return result;
+    }
 }

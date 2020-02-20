@@ -243,4 +243,40 @@ public class TopInterviewQuestionsTest {
 //        ArrayProblems.maximumSubarray(nums);
         ArrayProblems.maximumSubarray2(nums);
     }
+
+
+    /**
+     * 26. Remove Duplicates from Sorted Array
+     */
+    @Test
+    public void question26(){
+        int[] nums = {1, 1, 2};
+        int result = ArrayProblems.p26(nums);
+        System.out.println(result);
+    }
+
+    /**
+     * 78. Subsets
+     *
+     * Input: nums = [1,2,3]
+     * Output:
+     * [
+     *   [3],
+     *   [1],
+     *   [2],
+     *   [1,2,3],
+     *   [1,3],
+     *   [2,3],
+     *   [1,2],
+     *   []
+     * ]
+     *
+     * https://leetcode.com/problems/subsets/discuss/299755/3-Java-solutions%3A-bit-iterative-and-recursive
+     * https://leetcode.com/problems/subsets/discuss/27281/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partitioning)
+     */
+    @Test
+    public void problem78(){
+        int[] nums = {1, 2, 3};
+        ArrayProblems.p78(nums);
+    }
 }
