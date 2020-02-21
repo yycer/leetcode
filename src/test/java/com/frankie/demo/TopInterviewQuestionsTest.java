@@ -4,10 +4,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author: Yao Frankie
@@ -277,6 +274,7 @@ public class TopInterviewQuestionsTest {
     @Test
     public void problem78(){
         int[] nums = {1, 2, 3};
-        ArrayProblems.p78(nums);
+        List<List<Integer>> lists = ArrayProblems.p78(nums);
+        Assert.assertEquals(lists.size(), 8);
     }
 }

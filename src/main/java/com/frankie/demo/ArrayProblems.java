@@ -241,7 +241,16 @@ public class ArrayProblems {
     }
 
     public static List<List<Integer>> p78(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-        return result;
+        List<List<Integer>> res = new ArrayList<>();
+        res.add(new ArrayList<>());
+        for (int n: nums){
+            int size = res.size();
+            for (int i = 0; i < size; i++){
+                List<Integer> tmp = new ArrayList<>(res.get(i));
+                tmp.add(n);
+                res.add(tmp);
+            }
+        }
+        return res;
     }
 }
