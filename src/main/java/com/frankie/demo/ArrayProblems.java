@@ -253,4 +253,25 @@ public class ArrayProblems {
         }
         return res;
     }
+
+
+    /**
+     * https://leetcode.com/problems/rotate-array/discuss/54250/Easy-to-read-Java-solution
+     * https://leetcode.com/problems/rotate-array/discuss/54458/Java-O(n)-in-place-solution.
+     */
+    public static void p189(int[] nums, int k) {
+        int len = nums.length;
+        k %= len;
+        reverse(nums, 0, len - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, len- 1);
+    }
+
+    private static void reverse(int[] nums, int start, int end) {
+        while (start < end){
+            int tmp       = nums[start];
+            nums[start++] = nums[end];
+            nums[end--]   = tmp;
+        }
+    }
 }

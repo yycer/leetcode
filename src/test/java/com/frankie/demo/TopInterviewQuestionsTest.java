@@ -277,4 +277,15 @@ public class TopInterviewQuestionsTest {
         List<List<Integer>> lists = ArrayProblems.p78(nums);
         Assert.assertEquals(lists.size(), 8);
     }
+
+    /**
+     * 189. Rotate Array
+     */
+    @Test
+    public void problem189(){
+        int[] nums = {1, 2, 3, 4, 5, 6, 7};
+        int k = 3;
+        ArrayProblems.p189(nums, k);
+        Assert.assertArrayEquals(nums, new int[]{5, 6, 7, 1, 2, 3, 4});
+    }
 }
