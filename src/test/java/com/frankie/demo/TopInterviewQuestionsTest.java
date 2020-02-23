@@ -288,4 +288,14 @@ public class TopInterviewQuestionsTest {
         ArrayProblems.p189(nums, k);
         Assert.assertArrayEquals(nums, new int[]{5, 6, 7, 1, 2, 3, 4});
     }
+
+    /**
+     * 62. Unique Paths
+     * https://leetcode.com/problems/unique-paths/discuss/241181/Java-Solutions
+     * https://leetcode.com/problems/unique-paths/discuss/23159/Java-different-solutions-(math-dp(O(m*n)-O(n)-space)).
+     */
+    @Test
+    void problem62(){
+
+    }
 }
