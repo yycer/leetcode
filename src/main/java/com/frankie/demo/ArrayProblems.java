@@ -274,4 +274,43 @@ public class ArrayProblems {
             nums[end--]   = tmp;
         }
     }
+
+    public static int uniquePathsUsingMath(int m, int n) {
+        m--;n--;
+        double ret = 1;
+        for (int i = 1; i <= Math.min(m, n); i++){
+            ret = ret * (m + n + 1 - i) / i;
+//            ret *= (double) (m + n + 1 - i) / i;
+        }
+//        return (int) Math.round(ret);
+        return (int) ret;
+    }
+
+    public static int uniquePathsUsingTwoDimenArray(int m, int n) {
+        int[][] ret = new int[m][n];
+
+        for (int i = 0; i < m; i++)
+            ret[i][0] = 1;
+
+        for (int j = 1; j < n; j++)
+            ret[0][j] = 1;
+
+        for (int i = 1; i < m; i++)
+            for (int j = 1; j < n; j++)
+                ret[i][j] = ret[i - 1][j] + ret[i][j - 1];
+
+        return ret[m - 1][n - 1];
+    }
+
+    public static int uniquePathsUsingTwoOneArray(int m, int n) {
+        int[] ret = new int[n];
+        for (int i = 0; i < n; i++)
+            ret[i] = 1;
+
+        for (int i = 1; i < m; i++)
+            for (int j = 1; j < n; j++)
+                ret[j] += ret[j - 1];
+
+        return ret[n - 1];
+    }
 }

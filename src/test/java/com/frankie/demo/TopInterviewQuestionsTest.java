@@ -296,6 +296,12 @@ public class TopInterviewQuestionsTest {
      */
     @Test
     void problem62(){
-
+        int m = 6, n = 4;
+//        int m = 9, n = 8;
+//        int ret = ArrayProblems.uniquePathsUsingMath(m, n);
+//        int ret = ArrayProblems.uniquePathsUsingTwoDimenArray(m, n);
+        int ret = ArrayProblems.uniquePathsUsingTwoOneArray(m, n);
+        Assert.assertEquals(ret, 56);
+//        Assert.assertEquals(ret, 6435);
     }
 }
