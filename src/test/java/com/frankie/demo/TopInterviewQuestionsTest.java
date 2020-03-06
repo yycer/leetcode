@@ -304,4 +304,25 @@ public class TopInterviewQuestionsTest {
         Assert.assertEquals(ret, 56);
 //        Assert.assertEquals(ret, 6435);
     }
+
+
+    /**
+     * 287. Find the Duplicate Number
+     *
+     * Example 1:
+     * Input: [1,3,4,2,2]
+     * Output: 2
+     *
+     * Example 2:
+     * Input: [3,1,3,4,2]
+     * Output: 3
+     */
+    @Test
+    void problem287(){
+//        int[] nums = {1, 3, 4, 2, 2};
+        int[] nums = {1, 5, 6, 2, 8, 3, 4, 2, 7, 9};
+//        ArrayProblems.findTheDupNum(nums);
+        int ret = ArrayProblems.findTheDupNum2(nums);
+        Assert.assertEquals(ret, 2);
+    }
 }

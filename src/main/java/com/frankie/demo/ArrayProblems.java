@@ -313,4 +313,31 @@ public class ArrayProblems {
 
         return ret[n - 1];
     }
+
+    public static int findTheDupNum(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int n: nums){
+            if (map.get(n) != null) return n;
+            else map.put(n, 1);
+        }
+        return 0;
+    }
+
+
+    public static int findTheDupNum2(int[] nums) {
+        int length = nums.length;
+        int low = 1, high = length - 1;
+
+        while (low < high){
+            int mid = low + (high - low) / 2;
+            int count = 0;
+            for (int n: nums){
+                if (n <= mid) count++;
+            }
+
+            if (count > mid) high = mid;
+            else low = mid + 1;
+        }
+        return low;
+    }
 }
