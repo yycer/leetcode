@@ -11,4 +11,10 @@ public class Utils {
         a[i]  = a[j];
         a[j]  = t;
     }
+
+    public static void swap(int[][] a, int i, int j){
+        int t   = a[i][j];
+        a[i][j] = a[j][i];
+        a[j][i] = t;
+    }
 }

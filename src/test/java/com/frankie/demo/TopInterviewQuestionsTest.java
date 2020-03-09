@@ -1,5 +1,6 @@
 package com.frankie.demo;
 
+import org.assertj.core.api.ArraySortedAssert;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -324,5 +325,57 @@ public class TopInterviewQuestionsTest {
 //        ArrayProblems.findTheDupNum(nums);
         int ret = ArrayProblems.findTheDupNum2(nums);
         Assert.assertEquals(ret, 2);
+    }
+
+    /**
+     * 48. Rotate Image
+     *
+     * Example 1:
+     * Given input matrix =
+     * [
+     *   [1,2,3],
+     *   [4,5,6],
+     *   [7,8,9]
+     * ],
+     *
+     * rotate the input matrix in-place such that it becomes:
+     * [
+     *   [7,4,1],
+     *   [8,5,2],
+     *   [9,6,3]
+     * ]
+     *
+     * https://leetcode.com/problems/rotate-image/discuss/226001/Java-Solutions
+     * https://leetcode.com/problems/rotate-image/discuss/19057/Java-simple-code
+     */
+    @Test
+    void problem48(){
+        int[][] matrix = {
+            {1,  2,  3,  4,  5},
+            {6,  7,  8,  9,  10},
+            {11, 12, 13, 14, 15},
+            {16, 17, 18, 19, 20},
+            {21, 22, 23, 24, 25}
+        };
+
+//        ArrayProblems.rotateImage(matrix);
+        ArrayProblems.rotateImageAntiClockwise(matrix);
+//        ArrayProblems.rotateImgUsingTDT(matrix);
+        for (int[] m: matrix)
+            System.out.println(Arrays.toString(m));
+    }
+
+    /**
+     * 11. Container With Most Water
+     *
+     * Input: [1,8,6,2,5,4,8,3,7]
+     * Output: 49
+     */
+    @Test
+    void problem11(){
+        int[] height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+//        int ret = ArrayProblems.containMostWater(height);
+        int ret = ArrayProblems.containMostWaterConcisely(height);
+        Assert.assertEquals(ret, 49);
     }
 }

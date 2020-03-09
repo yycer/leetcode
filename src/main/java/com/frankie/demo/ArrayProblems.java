@@ -340,4 +340,75 @@ public class ArrayProblems {
         }
         return low;
     }
+
+    public static void rotateImageClockwise(int[][] matrix) {
+        int tmp = 0, n = matrix.length;
+
+        for (int i = 0; i <= n / 2 - 1; i++)
+            for (int j = 0; j <= (n - 1) / 2; j++){
+                tmp = matrix[i][j];
+                matrix[i][j] = matrix[n - 1 - j][i];
+                matrix[n - 1 - j][i] = matrix[n - 1 - i][n - 1 - j];
+                matrix[n - 1 - i][n - 1 - j] = matrix[j][n - 1 - i];
+                matrix[j][n - 1 - i] = tmp;
+            }
+    }
+
+    public static void rotateImageAntiClockwise(int[][] matrix) {
+        int tmp = 0, n = matrix.length;
+
+        for (int i = 0; i <= n / 2 - 1; i++)
+            for (int j = 0; j <= (n - 1) / 2; j++){
+                tmp = matrix[i][j];
+                matrix[i][j] = matrix[j][n - 1 - i];
+                matrix[j][n - 1 - i] = matrix[n - 1 - i][n - 1 - j];
+                matrix[n - 1 - i][n - 1 - j] = matrix[n - 1 - j][i];
+                matrix[n - 1 - j][i] = tmp;
+            }
+    }
+
+    /**
+     * TDT: Top Down and Transpose.
+     */
+    public static void rotateImgUsingTDT(int[][] matrix){
+        reverseTopDown(matrix);
+        transpose(matrix);
+    }
+
+    private static void reverseTopDown(int[][] matrix) {
+        for (int start = 0, end = matrix.length - 1; start < end; start++, end--){
+            int[] tmp     = matrix[start];
+            matrix[start] = matrix[end];
+            matrix[end]   = tmp;
+        }
+    }
+
+    private static void transpose(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++)
+            for (int j = i + 1; j < matrix[i].length; j++)
+                Utils.swap(matrix, i, j);
+    }
+
+    public static int containMostWater(int[] height) {
+        int len = height.length;
+        int l = 0, r = len - 1;
+        int max = Math.min(height[l], height[r]) * (r - l);
+        while (l < r){
+            if (height[l] < height[r])
+                max = Math.max(max, Math.min(height[++l], height[r]) * (r - l));
+            else
+                max = Math.max(max, Math.min(height[l], height[--r]) * (r - l));
+        }
+        return max;
+    }
+
+    public static int containMostWaterConcisely(int[] height){
+        int l = 0, r = height.length - 1, max = 0;
+        while (l < r){
+            max = Math.max(max, Math.min(height[l], height[r]) * (r - l));
+            if (height[l] < height[r]) l++;
+            else r--;
+        }
+        return max;
+    }
 }
