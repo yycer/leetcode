@@ -378,4 +378,15 @@ public class TopInterviewQuestionsTest {
         int ret = ArrayProblems.containMostWaterConcisely(height);
         Assert.assertEquals(ret, 49);
     }
+
+    /**
+     * 3. Longest Substring Without Repeating Characters
+     */
+    @Test
+    void problem3(){
+        String s = "abcabcbb";
+//        int ret = HashTableUtils.getLongestStringLength(s);
+        int ret = HashTableUtils.lolsUsingSlidingWindow(s);
+        Assert.assertEquals(ret, 3);
+    }
 }
