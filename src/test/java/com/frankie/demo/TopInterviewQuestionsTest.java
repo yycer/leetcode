@@ -1,6 +1,5 @@
 package com.frankie.demo;
 
-import org.assertj.core.api.ArraySortedAssert;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -388,5 +387,35 @@ public class TopInterviewQuestionsTest {
 //        int ret = HashTableUtils.getLongestStringLength(s);
         int ret = HashTableUtils.lolsUsingSlidingWindow(s);
         Assert.assertEquals(ret, 3);
+    }
+
+
+    /**
+     * 169. Majority Element
+     */
+    @Test
+    void problem169(){
+        int[] nums = {3, 2, 3};
+        HashTableUtils.majorityElement(nums);
+    }
+
+    /**
+     * 1365. How Many Numbers Are Smaller Than the Current Number
+     */
+    @Test
+    void problem1365() {
+        int[] nums = {5, 1, 2, 2, 3};
+//        int[] ret = HashTableUtils.smallerNumbersThanCurrent(nums);
+        int[] ret = HashTableUtils.smallerNumbersThanCurrentImprove(nums);
+        System.out.println(Arrays.toString(ret));
+    }
+
+    /**
+     * 1207. Unique Number of Occurrences
+     */
+    @Test
+    void problem1207(){
+        int[] arr = {1, 2, 2, 1, 1, 3};
+        HashTableUtils.uniqueOccurrences(arr);
     }
 }

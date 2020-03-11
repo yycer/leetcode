@@ -1,7 +1,9 @@
 package com.frankie.demo;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author: Yao Frankie
@@ -61,4 +63,97 @@ public class HashTableUtils {
         return ret;
     }
 
+    public static int majorityElement(int[] nums) {
+        if (nums.length == 1) return nums[0];
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int n: nums){
+            if (map.containsKey(n)){
+                map.put(n, map.get(n) + 1);
+                if (map.get(n) > (nums.length / 2)) return n;
+            }
+            else
+                map.put(n, 1);
+        }
+        return 0;
+    }
+
+    public static int majorityElement2(int[] nums) {
+        int ret = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int n: nums){
+            if (map.containsKey(n))
+                map.put(n, map.get(n) + 1);
+            else
+                map.put(n, 1);
+            if (map.get(n) > nums.length / 2){
+                ret = n;
+                break;
+            }
+        }
+        return ret;
+    }
+
+    public static int[] smallerNumbersThanCurrent(int[] nums) {
+        int[] ret = new int[nums.length];
+        for (int i = 0; i < nums.length; i++){
+            int tmp = 0;
+            for (int j = 0; j < nums.length; j++){
+                if (nums[j] < nums[i]) tmp++;
+            }
+            ret[i] = tmp;
+        }
+        return ret;
+    }
+
+    /**
+     * https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/discuss/524823/Simple-Java-solution
+     */
+    public static int[] smallerNumbersThanCurrentImprove(int[] nums) {
+        int[] tmpArr = new int[101];
+        int[] retArr = new int[nums.length];
+        int cur = 0;
+        for (int n: nums)
+            tmpArr[n]++;
+
+        for (int i = 0; i < 101; i++){
+            cur += tmpArr[i];
+            tmpArr[i] = cur;
+        }
+
+        for (int i = 0; i < nums.length; i++){
+            if (nums[i] == 0)
+                retArr[i] = 0;
+            else
+                retArr[i] = tmpArr[nums[i] - 1];
+        }
+        return retArr;
+    }
+
+    public static boolean uniqueOccurrences(int[] arr) {
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int n: arr){
+            if (map.containsKey(n))
+                map.put(n, map.get(n) + 1);
+            else
+                map.put(n, 1);
+        }
+
+        return map.values().size() == map.values().stream().collect(Collectors.toSet()).size();
+    }
+
+    /**
+     * https://leetcode.com/problems/unique-number-of-occurrences/discuss/392858/JavaPython-3-4-liner-and-2-liner-Using-Map-and-Set-w-brief-explanation-and-analysis.
+     * https://leetcode.com/problems/unique-number-of-occurrences/discuss/392918/Java-array-%2B-set-beat-100
+     * 1. HashSet(Collection<? extends E> c)
+     * 2. getOrDefault(Object key, V defaultValue)
+     */
+    public static boolean uniqueOccurrencesImprove1(int[] arr) {
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int n: arr)
+            map.put(n, map.getOrDefault(n, 0) + 1);
+
+        return map.values().size() == new HashSet<>(map.values()).size();
+    }
 }
