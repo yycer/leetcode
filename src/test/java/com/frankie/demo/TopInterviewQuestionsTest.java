@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author: Yao Frankie
@@ -418,5 +419,37 @@ public class TopInterviewQuestionsTest {
         int[] arr = {1, 2, 2, 1, 1, 3};
 //        HashTableUtils.uniqueOccurrences(arr);
         HashTableUtils.uniqueOccurrencesImprove2(arr);
+    }
+
+    @Test
+    void playListAndMap(){
+        List<Map<String, Object>> list = new ArrayList<>();
+
+        HashMap<String, Object> map1 = new HashMap<>();
+        map1.put("intro", "xxx");
+        map1.put("time", "123");
+
+        HashMap<String, Object> map2 = new HashMap<>();
+        map2.put("intro", "desc");
+        map2.put("time", "8996748312");
+
+        list.add(map1);
+        list.add(map2);
+        System.out.println(list);
+
+        List<HashMap<String, Object>> ret = list.stream().map(x -> {
+            HashMap<String, Object> tmpMap = new HashMap<>();
+            tmpMap.put("intro", x.get("intro"));
+            return tmpMap;
+        }).collect(Collectors.toList());
+
+        List<String> intro = list.stream().map(x -> (String) x.get("intro"))
+                .collect(Collectors.toList());
+
+        System.out.println(intro);
+
+//        list.stream().map(x -> x.get("intro"))
+
+        System.out.println(ret);
     }
 }
