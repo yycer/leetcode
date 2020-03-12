@@ -416,6 +416,7 @@ public class TopInterviewQuestionsTest {
     @Test
     void problem1207(){
         int[] arr = {1, 2, 2, 1, 1, 3};
-        HashTableUtils.uniqueOccurrences(arr);
+//        HashTableUtils.uniqueOccurrences(arr);
+        HashTableUtils.uniqueOccurrencesImprove2(arr);
     }
 }

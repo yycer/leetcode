@@ -3,6 +3,7 @@ package com.frankie.demo;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -144,7 +145,6 @@ public class HashTableUtils {
 
     /**
      * https://leetcode.com/problems/unique-number-of-occurrences/discuss/392858/JavaPython-3-4-liner-and-2-liner-Using-Map-and-Set-w-brief-explanation-and-analysis.
-     * https://leetcode.com/problems/unique-number-of-occurrences/discuss/392918/Java-array-%2B-set-beat-100
      * 1. HashSet(Collection<? extends E> c)
      * 2. getOrDefault(Object key, V defaultValue)
      */
@@ -156,4 +156,23 @@ public class HashTableUtils {
 
         return map.values().size() == new HashSet<>(map.values()).size();
     }
+
+    /**
+     * https://leetcode.com/problems/unique-number-of-occurrences/discuss/392918/Java-array-%2B-set-beat-100
+     */
+    public static boolean uniqueOccurrencesImprove2(int[] arr) {
+        Set<Integer> set = new HashSet<>();
+        int[] tmpArr = new int[2001];
+        for (int n: arr)
+            tmpArr[n + 1000]++;
+
+        for (int n: tmpArr){
+            if (n != 0){
+                if (set.contains(n)) return false;
+                set.add(n);
+            }
+        }
+        return true;
+    }
+
 }
