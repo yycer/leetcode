@@ -452,4 +452,18 @@ public class TopInterviewQuestionsTest {
 
         System.out.println(ret);
     }
+
+    @Test
+    void getDiffSet(){
+        ArrayList<String> dbNames = new ArrayList<>();
+        dbNames.add("yyc");
+        dbNames.add("asan");
+
+        ArrayList<String> inputNames = new ArrayList<>();
+        inputNames.add("yyc");
+        inputNames.add("pangzi");
+
+        dbNames.removeAll(inputNames);
+        System.out.println(dbNames);
+    }
 }
