@@ -1,9 +1,6 @@
 package com.frankie.demo;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -175,4 +172,80 @@ public class HashTableUtils {
         return true;
     }
 
+    /**
+     * String[] words = {"cat", "bt", "hat", "tree"};
+     * String   chars = "atach";
+     */
+    public static int countCharacters(String[] words, String chars) {
+
+        int ret = 0;
+
+        for (String word: words){
+            Map<Character, Integer> map = buildMap(chars);
+            for (char c: word.toCharArray()){
+                Integer cur = map.get(c);
+                if (cur != null && cur > 0)
+                    map.put(c, cur - 1);
+                else break;
+            }
+            int valueSum = map.values().stream().mapToInt(Integer::intValue).sum();
+            if (valueSum + word.length() == chars.length()){
+                ret += word.length();
+            }
+        }
+        return ret;
+    }
+
+    private static Map<Character, Integer> buildMap(String chars) {
+        Map<Character, Integer> map = new HashMap<>();
+        for (char c: chars.toCharArray())
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        return map;
+    }
+
+    /**
+     * 1. Using array as HashMap(char - 97), Just for lower letter.
+     * 2. use tmp value instead of stream.sum
+     * 3. Arrays.copyOf(short[] original, int newLength)。
+     * https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/discuss/361004/Easy-Explained-Simple-Java-Check-all-char-count
+     */
+    public static int countCharactersImprove(String[] words, String chars) {
+
+        int ret = 0;
+        int[] seen = new int[26];
+        for (Character c: chars.toCharArray())
+            seen[c - 97]++;
+        
+        for (String word: words){
+            int tmp = 0;
+            int[] tSeen = Arrays.copyOf(seen, seen.length);
+            for (Character c: word.toCharArray()){
+                if (tSeen[c - 97] < 1){
+                    break;
+                } else {
+                    tSeen[c - 97]--;
+                    tmp++;
+                }
+            }
+            if (tmp == word.length())
+                ret += tmp;
+        }
+        return ret;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

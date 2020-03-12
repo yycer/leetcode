@@ -466,4 +466,15 @@ public class TopInterviewQuestionsTest {
         dbNames.removeAll(inputNames);
         System.out.println(dbNames);
     }
+
+    /**
+     * 1160. Find Words That Can Be Formed by Characters
+     */
+    @Test
+    void problem1160(){
+        String[] words = {"cat", "bt", "hat", "tree"};
+        String   chars = "atach";
+//        HashTableUtils.countCharacters(words, chars);
+        HashTableUtils.countCharactersImprove(words, chars);
+    }
 }
