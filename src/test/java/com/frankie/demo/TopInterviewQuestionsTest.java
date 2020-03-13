@@ -520,4 +520,18 @@ public class TopInterviewQuestionsTest {
         char ret = HashTableUtils.findTheDiffUsingXor(s, t);
         Assert.assertEquals(ret, 'd');
     }
+
+
+    /**
+     * 463. Island Perimeter
+     */
+    @Test
+    void p463(){
+        int[][] grid = {{0, 1, 0, 0},
+                        {1, 1, 1, 0},
+                        {0, 1, 0, 0},
+                        {1, 1, 0, 0}};
+        int ret = HashTableUtils.islandPerimeter(grid);
+        Assert.assertEquals(ret, 16);
+    }
 }
