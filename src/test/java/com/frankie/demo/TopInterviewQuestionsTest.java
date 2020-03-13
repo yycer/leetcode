@@ -474,7 +474,18 @@ public class TopInterviewQuestionsTest {
     void problem1160(){
         String[] words = {"cat", "bt", "hat", "tree"};
         String   chars = "atach";
-//        HashTableUtils.countCharacters(words, chars);
-        HashTableUtils.countCharactersImprove(words, chars);
+        int ret = HashTableUtils.countCharacters(words, chars);
+        Assert.assertEquals(ret, 6);
+//        HashTableUtils.countCharactersImprove(words, chars);
+    }
+
+    /**
+     * 1002. Find Common Characters
+     */
+    @Test
+    void problem1002() {
+//        String[] A = {"bella", "label", "roller"};
+        String[] A = {"abcd", "abd", "acd"};
+        HashTableUtils.findCommonCharacters(A);
     }
 }

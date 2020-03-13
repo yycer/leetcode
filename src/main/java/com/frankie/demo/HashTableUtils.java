@@ -232,6 +232,28 @@ public class HashTableUtils {
         }
         return ret;
     }
+
+    public static List<String> findCommonCharacters(String[] A) {
+        List<String> retList = new ArrayList<>();
+        int[][] helpArr = new int[A.length][26];
+        for (int i = 0; i < A.length; i++)
+            for (char c: A[i].toCharArray())
+                helpArr[i][c - 97]++;
+        for (int i = 1; i < A.length; i++){
+            for (int j = 0; j < 26; j++){
+                if (helpArr[i][j] > helpArr[i - 1][j])
+                    helpArr[i][j] = helpArr[i - 1][j];
+            }
+        }
+        for (int i = 0; i < 26; i++){
+            int cur = helpArr[A.length - 1][i];
+            while (cur > 0){
+                retList.add(String.valueOf((char)('a' + i)));
+                cur--;
+            }
+        }
+        return retList;
+    }
 }
 
 
