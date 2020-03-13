@@ -2,6 +2,7 @@ package com.frankie.demo;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * @author: Yao Frankie
@@ -234,17 +235,23 @@ public class HashTableUtils {
     }
 
     public static List<String> findCommonCharacters(String[] A) {
+
         List<String> retList = new ArrayList<>();
         int[][] helpArr = new int[A.length][26];
+        // Step1: Build two-dimensional array.
         for (int i = 0; i < A.length; i++)
             for (char c: A[i].toCharArray())
                 helpArr[i][c - 97]++;
+
+        // Step2: Process common characters.
         for (int i = 1; i < A.length; i++){
             for (int j = 0; j < 26; j++){
                 if (helpArr[i][j] > helpArr[i - 1][j])
                     helpArr[i][j] = helpArr[i - 1][j];
             }
         }
+
+        // Step3: Get common characters.
         for (int i = 0; i < 26; i++){
             int cur = helpArr[A.length - 1][i];
             while (cur > 0){
@@ -253,6 +260,26 @@ public class HashTableUtils {
             }
         }
         return retList;
+    }
+
+    public static int findSingleNumber(int[] nums) {
+        int ret = 0;
+        for (int n: nums)
+            ret ^= n;
+        return ret;
+    }
+
+    /**
+     * https://leetcode.com/problems/single-number/discuss/43000/Python-different-solutions.
+     */
+    public static int findSingleNumberUsingMath(int[] nums){
+        int sum = IntStream.of(nums).sum();
+        Set<Integer> numsSet = new HashSet<>();
+        for (int n: nums)
+            numsSet.add(n);
+
+        int setSum = numsSet.stream().mapToInt(Integer::intValue).sum();
+        return 2 * setSum - sum;
     }
 }
 

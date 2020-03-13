@@ -488,4 +488,14 @@ public class TopInterviewQuestionsTest {
         String[] A = {"abcd", "abd", "acd"};
         HashTableUtils.findCommonCharacters(A);
     }
+
+    /**
+     * 136. Single Number
+     */
+    @Test
+    void problem136() {
+        int[] nums = {4, 1, 2, 1, 2};
+        int ret = HashTableUtils.findSingleNumber(nums);
+        Assert.assertEquals(ret, 4);
+    }
 }
