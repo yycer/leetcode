@@ -281,6 +281,58 @@ public class HashTableUtils {
         int setSum = numsSet.stream().mapToInt(Integer::intValue).sum();
         return 2 * setSum - sum;
     }
+
+    public static int findSingleNumber2(int[] nums) {
+        int ret = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int n: nums)
+            map.put(n, map.getOrDefault(n, 0) + 1);
+        for (Map.Entry<Integer, Integer> entry: map.entrySet()){
+            if (entry.getValue() == 1){
+                ret = entry.getKey();
+                return ret;
+            }
+        }
+        return ret;
+    }
+
+    public static char findTheDiff(String s, String t) {
+        char ret = 0;
+        int[] sArr = new int[26];
+        int[] tArr = new int[26];
+
+        for (char c: s.toCharArray())
+            sArr[c - 97]++;
+
+        for (char c: t.toCharArray())
+            tArr[c - 97]++;
+
+        for (int i = 0; i < 26; i++){
+            if (tArr[i] - sArr[i] == 1) ret = (char) (i + 'a');
+        }
+        return ret;
+    }
+
+    /**
+     * https://leetcode.com/problems/find-the-difference/discuss/86825/Java-solution-using-bit-manipulation
+     */
+    public static char findTheDiffUsingXor(String s, String t){
+        char c = 0;
+        for (char sc: s.toCharArray())
+            c ^= sc;
+
+        for (char tc: t.toCharArray())
+            c ^= tc;
+
+        return c;
+    }
+
+    /**
+     * https://leetcode.com/problems/find-the-difference/discuss/86913/JavaC%2B%2B-1-liner
+     */
+    public static char findTheDiffUsingStream(String s, String t){
+        return (char) (s + t).chars().reduce(0, (a, b) -> a ^ b);
+    }
 }
 
 

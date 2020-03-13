@@ -498,4 +498,26 @@ public class TopInterviewQuestionsTest {
         int ret = HashTableUtils.findSingleNumber(nums);
         Assert.assertEquals(ret, 4);
     }
+
+    /**
+     * 137. Single Number II
+     */
+    @Test
+    void problem137(){
+        int[] nums = {1, 1, 2, 1};
+        int ret = HashTableUtils.findSingleNumber2(nums);
+        Assert.assertEquals(ret, 2);
+    }
+
+    /**
+     * 389. Find the Difference
+     */
+    @Test
+    void p389(){
+        String s = "abc";
+        String t = "cabd";
+//        char ret = HashTableUtils.findTheDiff(s, t);
+        char ret = HashTableUtils.findTheDiffUsingXor(s, t);
+        Assert.assertEquals(ret, 'd');
+    }
 }
