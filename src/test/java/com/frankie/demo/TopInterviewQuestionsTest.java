@@ -567,6 +567,16 @@ public class TopInterviewQuestionsTest {
         boolean ret = HashTableUtils.validAnagram(s, t);
         Assert.assertTrue(ret);
     }
+
+    /**
+     * 350. Intersection of Two Arrays II
+     */
+    @Test
+    void p350() {
+        int[] nums1 = {1, 2, 2, 1}, nums2 = {2, 2};
+        int[] ret = HashTableUtils.intersect(nums1, nums2);
+        System.out.println(Arrays.toString(ret));
+    }
 }
 
 

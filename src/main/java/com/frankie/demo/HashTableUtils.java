@@ -437,6 +437,28 @@ public class HashTableUtils {
             arr[ts - 97]--;
         return Arrays.stream(arr).reduce(0, (a, b) -> Math.abs(a) + Math.abs(b)) == 0;
     }
+
+    public static int[] intersect(int[] nums1, int[] nums2) {
+
+        ArrayList<Integer> retList = new ArrayList<>();
+        Map<Integer, Integer> map1 = new HashMap<>();
+        Map<Integer, Integer> map2 = new HashMap<>();
+
+        for (int n: nums1)
+            map1.put(n, map1.getOrDefault(n, 0) + 1);
+
+        for (int n: nums2)
+            map2.put(n, map2.getOrDefault(n, 0) + 1);
+
+        for (int key: map1.keySet()){
+            int val = Math.min(map1.getOrDefault(key, 0), map2.getOrDefault(key, 0));
+            while (val > 0) {
+                retList.add(key);
+                val--;
+            }
+        }
+        return retList.stream().mapToInt(i -> i).toArray();
+    }
 }
 
 
