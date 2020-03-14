@@ -380,6 +380,63 @@ public class HashTableUtils {
 
         return retList.toArray(new String[0]);
     }
+
+    public static int maxNumberOfBalloons(String text) {
+        int[] arr = new int[26];
+        for (char c: text.toCharArray())
+            arr[c - 97]++;
+        int ret = arr[0];
+
+        for (int i = 0; i < 26; i++){
+            if (i == 'l' - 97 || i == 'o' - 97)
+                ret = Math.min(ret, arr[i] / 2);
+            if (i == 'a' - 97 || i == 'b' - 97 || i == 'n' - 97)
+                ret = Math.min(ret, arr[i]);
+        }
+        return ret;
+    }
+
+    /**
+     * https://leetcode.com/problems/maximum-number-of-balloons/discuss/382401/WithComments-StraightForward-Java-Simple-count-of-chars
+     */
+    public static int maxNumberOfBalloonsConcisely(String text) {
+        int[] arr = new int[26];
+        for (char c: text.toCharArray())
+            arr[c - 97]++;
+        int ret = arr[1];                 // b
+        ret = Math.min(ret, arr[0]);      // a
+        ret = Math.min(ret, arr[11] / 2); // l
+        ret = Math.min(ret, arr[14] / 2); // o
+        ret = Math.min(ret, arr[13]);     // n
+        return ret;
+    }
+
+    public static boolean validAnagram(String s, String t) {
+        if (s.length() != t.length()) return false;
+        int[] arr = new int[26];
+        for (char sc: s.toCharArray())
+            arr[sc - 97]++;
+        for (char ts: t.toCharArray())
+            // Be careful: s = "a", t = "b";
+            if (arr[ts - 97] > 0) arr[ts - 97]--;
+        return Arrays.stream(arr).sum() == 0;
+    }
+
+    /**
+     * 1. Math.abs()
+     * 2. Stream.reduce()
+     * My solutions in C++, Java, Python, C, C#, JavaScript, and Ruby
+     * https://leetcode.com/problems/valid-anagram/discuss/66490/My-solutions-in-C%2B%2B-Java-Python-C-C-JavaScript-and-Ruby
+     */
+    public static boolean validAnagramImprove(String s, String t) {
+        if (s.length() != t.length()) return false;
+        int[] arr = new int[26];
+        for (char sc: s.toCharArray())
+            arr[sc - 97]++;
+        for (char ts: t.toCharArray())
+            arr[ts - 97]--;
+        return Arrays.stream(arr).reduce(0, (a, b) -> Math.abs(a) + Math.abs(b)) == 0;
+    }
 }
 
 

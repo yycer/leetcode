@@ -544,4 +544,34 @@ public class TopInterviewQuestionsTest {
         String  A = "this apple is sweet", B = "this apple is sour";
         HashTableUtils.findUncommonWords(A, B);
     }
+
+    /**
+     * 1189. Maximum Number of Balloons
+     */
+    @Test
+    void p1189(){
+        String text = "loonbalxballpoon";
+//        int ret = HashTableUtils.maxNumberOfBalloons(text);
+        int ret = HashTableUtils.maxNumberOfBalloonsConcisely(text);
+        Assert.assertEquals(ret, 2);
+    }
+
+
+    /**
+     * 242. Valid Anagram
+     */
+    @Test
+    void p242(){
+//        String s = "anagram", t = "nagaram";
+        String s = "a", t = "b";
+        boolean ret = HashTableUtils.validAnagram(s, t);
+        Assert.assertTrue(ret);
+    }
 }
+
+
+
+
+
+
+
