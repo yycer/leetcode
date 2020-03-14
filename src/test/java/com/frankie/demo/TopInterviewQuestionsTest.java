@@ -527,10 +527,11 @@ public class TopInterviewQuestionsTest {
      */
     @Test
     void p463(){
-        int[][] grid = {{0, 1, 0, 0},
-                        {1, 1, 1, 0},
-                        {0, 1, 0, 0},
-                        {1, 1, 0, 0}};
+        int[][] grid = new int[4][4];
+        grid[0] = new int[]{0, 1, 0, 0};
+        grid[1] = new int[]{1, 1, 1, 0};
+        grid[2] = new int[]{0, 1, 0, 0};
+        grid[3] = new int[]{1, 1, 0, 0};
         int ret = HashTableUtils.islandPerimeter(grid);
         Assert.assertEquals(ret, 16);
     }
