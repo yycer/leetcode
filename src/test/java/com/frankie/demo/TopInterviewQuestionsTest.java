@@ -535,4 +535,13 @@ public class TopInterviewQuestionsTest {
         int ret = HashTableUtils.islandPerimeter(grid);
         Assert.assertEquals(ret, 16);
     }
+
+    /**
+     * 884. Uncommon Words from Two Sentences
+     */
+    @Test
+    void p884(){
+        String  A = "this apple is sweet", B = "this apple is sour";
+        HashTableUtils.findUncommonWords(A, B);
+    }
 }

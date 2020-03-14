@@ -349,6 +349,37 @@ public class HashTableUtils {
             }
         return islands * 4 - neighbours * 2;
     }
+
+    /**
+     * https://leetcode.com/problems/uncommon-words-from-two-sentences/discuss/158981/Java-3-liner-and-5-liner-using-HashMap-and-HashSets-respectively.
+     */
+    public static String[] findUncommonWords(String A, String B) {
+        Set<String> distinctSet = new HashSet<>(), comSet = new HashSet<>();
+        for (String word: (A + " " + B).split("\\s")){
+            if (comSet.contains(word) || !distinctSet.add(word)){
+                distinctSet.remove(word);
+                comSet.add(word);
+            }
+        }
+        return distinctSet.toArray(new String[0]);
+    }
+
+    /**
+     * https://leetcode.com/problems/uncommon-words-from-two-sentences/discuss/158967/C%2B%2BJavaPython-Easy-Solution-with-Explanation
+     */
+    public static String[] findUncommonWordsUsingMap(String A, String B){
+        Map<String, Integer> map  = new HashMap<>();
+        ArrayList<String> retList = new ArrayList<>();
+        String[] words = (A + " " + B).split("\\s");
+        for (String word: words)
+            map.put(word, map.getOrDefault(word, 0) + 1);
+//        for (Map.Entry<String, Integer> entry: map.entrySet())
+//            if (entry.getValue() == 1) retList.add(entry.getKey());
+        for (String word: map.keySet())
+            if (map.get(word) == 1) retList.add(word);
+
+        return retList.toArray(new String[0]);
+    }
 }
 
 
