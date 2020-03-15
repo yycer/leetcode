@@ -551,6 +551,69 @@ public class HashTableUtils {
         for (int n: arr) ret += n >> 1 << 1;
         return ret == s.length() ? ret : ret + 1;
     }
+
+    public static boolean isHappy(int n) {
+        if (n <= 0) return false;
+        while (n > 9){
+            n = reshape(n);
+        }
+        if (n == 1 || n == 7) return true;
+        return false;
+    }
+
+    public static int reshape(int n) {
+        List<Integer> list = new ArrayList<>();
+        while (n > 0){
+            list.add(n % 10);
+            n /= 10;
+        }
+        // return list.stream().map(x -> (int) Math.pow(x, 2)).mapToInt(Integer::intValue).sum();
+        return list.stream().mapToInt(x -> (int) Math.pow(x, 2)).sum();
+    }
+
+    public static boolean isHappyUsingString(int n) {
+        if (n <= 0) return false;
+        while (n > 9){
+//            n = String.valueOf(n).chars().map(x -> (int) Math.pow(x - 48, 2)).sum();
+            n = String.valueOf(n).chars().map(x -> (x - 48) * (x - 48)).sum();
+        }
+        if (n == 1 || n == 7) return true;
+        return false;
+    }
+
+    /**
+     * https://leetcode.com/problems/happy-number/discuss/56913/Beat-90-Fast-Easy-Understand-Java-Solution-with-Brief-Explanation
+     */
+    public static boolean isHappyUsingSet(int n){
+        Set<Integer> set = new HashSet<>();
+        int sum, rem;
+        // Avoid infinite loop!
+        while (set.add(n)){
+            sum = 0;
+            while (n > 0){
+                rem = n % 10;
+                sum += rem * rem;
+                n /= 10;
+            }
+            if (sum == 1) return true;
+            else n = sum;
+        }
+        return false;
+    }
+
+    public static boolean isHappyUsingRecursion(int n){
+        if (n < 10){
+            if (n == 1 || n == 7) return true;
+            else return false;
+        }
+        int sum = 0;
+        while (n > 0){
+            int rem = n % 10;
+            sum += rem * rem;
+            n /= 10;
+        }
+        return isHappyUsingString(sum);
+    }
 }
 
 

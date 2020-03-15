@@ -602,6 +602,16 @@ public class TopInterviewQuestionsTest {
         int ret = HashTableUtils.longestPalindrome(s);
         Assert.assertEquals(ret, 7);
     }
+
+    /**
+     * 202. Happy Number
+     */
+    @Test
+    void p202(){
+        int n = 19;
+        boolean ret = HashTableUtils.isHappyUsingString(n);
+        Assert.assertTrue(ret);
+    }
 }
 
 
