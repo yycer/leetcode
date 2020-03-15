@@ -577,6 +577,31 @@ public class TopInterviewQuestionsTest {
         int[] ret = HashTableUtils.intersect(nums1, nums2);
         System.out.println(Arrays.toString(ret));
     }
+
+    /**
+     * 599. Minimum Index Sum of Two Lists
+     */
+    @Test
+    void p599() {
+        String[] list1 = {"a", "b", "c", "d"};
+        String[] list2 = {"d", "b", "a", "c"};
+        String[] ret = HashTableUtils.findRestaurant(list1, list2);
+        Assert.assertEquals(Arrays.toString(ret), "[a, b]");
+    }
+
+
+    /**
+     * 409. Longest Palindrome
+     */
+    @Test
+    void p409(){
+//        String s = "abccccdd";
+        String s = "abbbcccc";
+//        String s = "bb";
+//        String s = "bbb";
+        int ret = HashTableUtils.longestPalindrome(s);
+        Assert.assertEquals(ret, 7);
+    }
 }
 
 

@@ -459,6 +459,98 @@ public class HashTableUtils {
         }
         return retList.stream().mapToInt(i -> i).toArray();
     }
+
+    public static String[] findRestaurant(String[] list1, String[] list2) {
+        ArrayList<String>   retList = new ArrayList<>();
+        Map<String, Integer> tmpMap = new HashMap<>();
+        Map<String, Integer> retMap = new HashMap<>();
+
+        for (int i = 0; i < list1.length; i++)
+            tmpMap.put(list1[i], i);
+
+        for (int i = 0; i < list2.length; i++){
+            if (tmpMap.containsKey(list2[i]))
+                retMap.put(list2[i], tmpMap.get(list2[i]) + i);
+        }
+
+        int minVal = retMap.values().stream()
+                .mapToInt(Integer::intValue).min()
+                .orElse(Integer.MAX_VALUE);
+
+        for (String res: retMap.keySet()){
+            if (retMap.get(res) == minVal)
+                retList.add(res);
+        }
+
+        return retList.toArray(new String[0]);
+    }
+
+    public static String[] findRestaurantImprove(String[] list1, String[] list2) {
+        LinkedList<String>  retList = new LinkedList<>();
+        Map<String, Integer> map    = new HashMap<>();
+
+        for (int i = 0; i < list1.length; i++)
+            map.put(list1[i], i);
+
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < list2.length; i++){
+            Integer j = map.get(list2[i]);
+            if (j != null && (i + j) <= min){
+                if ((i + j) < min){
+                    retList.clear();
+                    min = i + j;
+                }
+                retList.add(list2[i]);
+            }
+        }
+        return retList.toArray(new String[0]);
+    }
+
+    public static int longestPalindrome(String s) {
+        int ret = 0;
+        boolean singleFlag = false;
+        Map<Character, Integer> map = new HashMap<>();
+        for (char c: s.toCharArray())
+            map.put(c, map.getOrDefault(c, 0) + 1);
+
+        for (char c: map.keySet()){
+            int cur = map.get(c);
+//            if (cur == 1 || cur % 2 == 1)
+            if (cur % 2 == 1)
+                singleFlag = true;
+            if (cur > 1)
+                ret += ((cur / 2) * 2);
+        }
+        return ret += (singleFlag ? 1 : 0);
+    }
+
+    /**
+     * https://leetcode.com/problems/longest-palindrome/discuss/89604/Simple-HashSet-solution-Java
+     */
+    public static int longestPalindromeUsingSet(String s) {
+        int count = 0;
+        Set<Character> set = new HashSet<>();
+        for (char c: s.toCharArray()){
+            if (set.contains(c)){
+                set.remove(c);
+                count++;
+            }
+            else
+                set.add(c);
+        }
+        return count * 2 + (set.isEmpty() ? 0 : 1);
+    }
+
+    /**
+     * https://leetcode.com/problems/longest-palindrome/discuss/89674/Java-4-lines-beats-90
+     */
+    public static int longestPalindromeAmazing(String s) {
+        int[] arr = new int[1 << 7];
+        int   ret = 0;
+        for (char c: s.toCharArray()) arr[c]++;
+        for (int n: arr) ret += n >> 1 << 1;
+        return ret == s.length() ? ret : ret + 1;
+    }
 }
 
 
