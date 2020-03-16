@@ -614,6 +614,86 @@ public class HashTableUtils {
         }
         return isHappyUsingString(sum);
     }
+
+    public static int findLHS(int[] nums) {
+        int ret = 0;
+        Map<Integer, Integer> treeMap = new TreeMap<>();
+        for (int n: nums)
+            treeMap.put(n, treeMap.getOrDefault(n, 0) + 1);
+
+        for (int k: treeMap.keySet()){
+            int cur = treeMap.get(k);
+            if (treeMap.containsKey(k + 1)){
+                ret = Math.max(ret, cur + treeMap.get(k + 1));
+            }
+        }
+        return ret;
+    }
+
+    /**
+     * https://leetcode.com/problems/longest-harmonious-subsequence/discuss/103497/Simple-Java-HashMap-Solution
+     */
+    public static int findLHSUsingHashMap(int[] nums) {
+        int ret = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int n: nums)
+            map.put(n, map.getOrDefault(n, 0) + 1);
+
+        for (int k: map.keySet()){
+            if (map.containsKey(k + 1)){
+                ret = Math.max(ret, map.get(k) + map.get(k + 1));
+            }
+        }
+        return ret;
+    }
+
+    /**
+     * https://leetcode.com/problems/set-mismatch/discuss/439805/Java-O(n)-solution-using-frequency-table
+     */
+    public static int[] findErrorNums(int[] nums) {
+        int[] retArr = new int[2];
+//        int[] arr = new int[10001];
+        int[] arr = new int[nums.length + 1];
+        for (int n: nums)
+            arr[n]++;
+
+        for (int i = 1; i <= nums.length; i++){
+            if (arr[i] == 2) retArr[0] = i;
+            if (arr[i] == 0) retArr[1] = i;
+        }
+        return retArr;
+    }
+
+    /**
+     * https://leetcode.com/problems/set-mismatch/discuss/105507/Java-O(n)-Time-O(1)-Space
+     */
+    public static int[] findErrorNumsAmazing(int[] nums){
+        int[] ret = new int[2];
+        for (int n: nums){
+            if (nums[Math.abs(n) - 1] < 0)
+                ret[0] = Math.abs(n);
+            else
+                nums[Math.abs(n) - 1] *= -1;
+        }
+
+        for (int i = 0; i < nums.length; i++){
+            if (nums[i] > 0) ret[1] = i + 1;
+        }
+        return ret;
+    }
+
+    public static int[] findErrorNumsUsingSet(int[] nums){
+        Set<Integer> set = new HashSet<>();
+        int duplicate = 0, len = nums.length;
+        long sum = len * (len + 1) / 2;
+        for (int n: nums){
+            if (set.contains(n))
+                duplicate = n;
+            sum -= n;
+            set.add(n);
+        }
+        return new int[]{duplicate, (int) (duplicate + sum)};
+    }
 }
 
 

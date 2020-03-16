@@ -612,6 +612,27 @@ public class TopInterviewQuestionsTest {
         boolean ret = HashTableUtils.isHappyUsingString(n);
         Assert.assertTrue(ret);
     }
+
+    /**
+     * 594. Longest Harmonious Subsequence
+     */
+    @Test
+    void p594(){
+        int[] nums = {1, 3, 2, 2, 5, 2, 3, 7};
+        int ret = HashTableUtils.findLHS(nums);
+        Assert.assertEquals(ret, 5);
+    }
+
+    /**
+     * 645. Set Mismatch
+     */
+    @Test
+    void p645(){
+        int[] nums = {1, 2, 2, 4};
+//        int[] ret = HashTableUtils.findErrorNums(nums);
+        int[] ret = HashTableUtils.findErrorNumsAmazing(nums);
+        Assert.assertEquals(Arrays.toString(ret), "[2, 3]");
+    }
 }
 
 
