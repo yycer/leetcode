@@ -694,6 +694,80 @@ public class HashTableUtils {
         }
         return new int[]{duplicate, (int) (duplicate + sum)};
     }
+
+    public static boolean findIS(String s, String t) {
+        if (s.length() != t.length()) return false;
+        Map<Character, Character> map = new HashMap<>();
+        for (int i = 0; i < s.length(); i++){
+            char curS = s.charAt(i);
+            char curT = t.charAt(i);
+            if (map.containsKey(curS) && map.get(curS) != curT)
+                return false;
+            if (map.containsKey(curT) && map.get(curT) != curS)
+                return false;
+            map.put(curS, curT);
+        }
+        return true;
+    }
+
+    public static boolean wordPattern(String pattern, String str) {
+        Map<Character, String> map = new HashMap<>();
+        String[] words = str.split("\\s");
+        if (pattern.length() != words.length) return false;
+        for (int i = 0; i < words.length; i++){
+            char cur = pattern.charAt(i);
+            if (map.containsKey(cur)  && !map.get(cur).equals(words[i])) return false;
+            if (!map.containsKey(cur) && map.containsValue(words[i])) return false;
+            map.put(cur, words[i]);
+        }
+        return true;
+    }
+
+    public static boolean wordPatternAmazing(String pattern, String str) {
+        Map index = new HashMap();
+        String[] words = str.split("\\s");
+        for (int i = 0; i < words.length; i++){
+           if (index.put(pattern.charAt(i), i) != index.put(words[i], i))
+               return false;
+        }
+        return true;
+    }
+
+    public static int countPrimes(int n) {
+        int ret = 0;
+        while (n > 1){
+            ret += isPrime(--n) ? 1 : 0;
+        }
+        return ret;
+    }
+
+    /**
+     */
+    private static boolean isPrime(int i) {
+        if (i <= 1) return false;
+        if (i == 2 || i == 3) return true;
+        int sqrt = (int) Math.sqrt(i);
+        while (sqrt >= 2){
+            if (i % sqrt == 0) return false;
+            sqrt--;
+        }
+        return true;
+    }
+
+    /**
+     * https://leetcode.com/problems/count-primes/discuss/57588/My-simple-Java-solution
+     */
+    public static int countPrimesImprove(int n) {
+        boolean[] notPrimeArr = new boolean[n];
+        int count = 0;
+        for (int i = 2; i < n; i++){
+            if (!notPrimeArr[i])
+                count++;
+            for (int j = 2; i * j < n; j++)
+                notPrimeArr[i * j] = true;
+        }
+        return count;
+    }
 }
 
 

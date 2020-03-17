@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -632,6 +634,47 @@ public class TopInterviewQuestionsTest {
 //        int[] ret = HashTableUtils.findErrorNums(nums);
         int[] ret = HashTableUtils.findErrorNumsAmazing(nums);
         Assert.assertEquals(Arrays.toString(ret), "[2, 3]");
+    }
+
+    /**
+     * 205. Isomorphic Strings
+     */
+    @Test
+    void p205(){
+//        String s = "paper";
+//        String t = "title";
+        String s = "ab";
+        String t = "aa";
+        boolean ret = HashTableUtils.findIS(s, t);
+        Assert.assertTrue(ret);
+    }
+
+    /**
+     * 290. Word Pattern
+     */
+    @Test
+    void p290(){
+        String pattern = "abba", str = "dog cat cat dog";
+//        boolean ret = HashTableUtils.wordPattern(pattern, str);
+        boolean ret = HashTableUtils.wordPatternAmazing(pattern, str);
+        Assert.assertTrue(ret);
+    }
+
+    /**
+     * 204. Count Primes
+     */
+    @Test
+    void p204(){
+        int n = 10;
+        LocalDateTime start = LocalDateTime.now();
+//        int n = 999983;
+//        int ret = HashTableUtils.countPrimes(n);
+        int ret = HashTableUtils.countPrimesImprove(n);
+        LocalDateTime end = LocalDateTime.now();
+        long millis = Duration.between(start, end).toMillis();
+//        Cost 2054 ms.
+        System.out.println("Cost " + millis + " ms.");
+//        Assert.assertEquals(ret, 4);
     }
 }
 
