@@ -43,4 +43,14 @@ public class BitManipulationTest {
         System.out.println(Arrays.toString(ret));
 
     }
+
+    /**
+     * 476. Number Complement
+     */
+    @Test
+    void p476(){
+        int num = 20;
+        int ret = BMUtils.findComplement(num);
+        Assert.assertEquals(ret, 11);
+    }
 }

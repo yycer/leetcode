@@ -78,4 +78,22 @@ public class BMUtils {
                         a - b : Integer.bitCount(a) - Integer.bitCount(b))
                 .mapToInt(Integer::intValue).toArray();
     }
+
+    /**
+     * https://leetcode.com/problems/number-complement/discuss/96018/Java-very-simple-code-and-self-evident-explanation
+     */
+    public static int findComplement(int num) {
+        int n = 0;
+        while (n < num)
+            n = (n << 1) | 1;
+        return n - num;
+    }
+
+    /**
+     * https://leetcode.com/problems/number-complement/discuss/95992/Java-1-line-bit-manipulation-solution
+     * https://leetcode.com/problems/number-complement/discuss/281148/Java-one-line
+     */
+    public static int findComplementUsingHOB(int num) {
+        return ((Integer.highestOneBit(num) << 1) - 1) ^ num;
+    }
 }
