@@ -53,4 +53,43 @@ public class BitManipulationTest {
         int ret = BMUtils.findComplement(num);
         Assert.assertEquals(ret, 11);
     }
+
+    /**
+     * 693. Binary Number with Alternating Bits
+     */
+    @Test
+    void p693(){
+        int n = 11;
+        boolean ret = BMUtils.hasAlternatingBits(n);
+        Assert.assertFalse(ret);
+    }
+
+    /**
+     * 231. Power of Two
+     */
+    @Test
+    void p231(){
+        int n = 8;
+        boolean ret = BMUtils.isPowerOfTwo(n);
+        Assert.assertTrue(ret);
+    }
+
+    /**
+     * 342. Power of Four
+     */
+    @Test
+    void p342(){
+        int num = 64;
+        boolean ret = BMUtils.isPowerOfFour(num);
+    }
+
+    /**
+     * 338. Counting Bits
+     */
+    @Test
+    void p338(){
+        int num = 5;
+        int[] ret = BMUtils.countBits(num);
+        System.out.println(Arrays.toString(ret));
+    }
 }
