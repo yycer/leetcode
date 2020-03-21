@@ -162,4 +162,24 @@ public class BMUtils {
         }
         return ret;
     }
+
+    /**
+     * https://leetcode.com/problems/counting-bits/discuss/79539/Three-Line-Java-Solution
+     */
+    public static int[] countBitsAmazing1(int num) {
+        int[] ret = new int[num + 1];
+        for (int i = 1; i <= num; i++)
+            ret[i] = ret[i >> 1] + (i & 1);
+        return ret;
+    }
+
+    /**
+     * https://leetcode.com/problems/counting-bits/discuss/79548/Easy-Understanding-DP-and-Bit-Java-Solution
+     */
+    public static int[] countBitsAmazing2(int num) {
+        int[] ret = new int[num + 1];
+        for (int i = 1; i <= num; i++)
+            ret[i] = ret[i & (i - 1)] + 1;
+        return ret;
+    }
 }
