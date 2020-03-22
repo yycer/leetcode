@@ -103,4 +103,14 @@ public class BitManipulationTest {
         int[] ret = BMUtils.singleNumberAmazing(nums);
         System.out.println(Arrays.toString(ret));
     }
+
+    /**
+     * 421. Maximum XOR of Two Numbers in an Array
+     */
+    @Test
+    void p421(){
+        int[] nums = {3, 10, 5, 25, 2, 8};
+        int ret = BMUtils.findMaximumXOR(nums);
+        Assert.assertEquals(ret, 28);
+    }
 }
