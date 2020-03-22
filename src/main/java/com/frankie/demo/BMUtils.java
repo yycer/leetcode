@@ -182,4 +182,38 @@ public class BMUtils {
             ret[i] = ret[i & (i - 1)] + 1;
         return ret;
     }
+
+    public static int[] singleNumber(int[] nums) {
+        int[] ret = new int[2];
+        Map<Integer, Integer> map = new HashMap<>(nums.length / 2 + 1);
+        for (int n: nums)
+            map.put(n, map.getOrDefault(n, 0) + 1);
+
+        int i = 0;
+        for (int key: map.keySet()){
+            if (map.get(key) == 1) ret[i++] = key;
+        }
+        return ret;
+    }
+
+    /**
+     * https://leetcode.com/problems/single-number-iii/discuss/68900/Accepted-C%2B%2BJava-O(n)-time-O(1)-space-Easy-Solution-with-Detail-Explanations
+     */
+    public static int[] singleNumberAmazing(int[] nums) {
+        int diff = 0;
+        for (int n: nums)
+            diff ^= n;
+
+        diff &= -diff;
+
+        int[] rets = {0, 0};
+        for (int n: nums){
+            if ((diff & n) == 0){
+                rets[0] ^= n;
+            } else {
+                rets[1] ^= n;
+            }
+        }
+        return rets;
+    }
 }

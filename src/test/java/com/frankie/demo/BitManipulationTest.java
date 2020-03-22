@@ -92,4 +92,15 @@ public class BitManipulationTest {
         int[] ret = BMUtils.countBits(num);
         System.out.println(Arrays.toString(ret));
     }
+
+    /**
+     * 260. Single Number III
+     */
+    @Test
+    void p260(){
+        int[] nums = {1, 2, 1, 3, 2, 5};
+//        int[] ret = BMUtils.singleNumber(nums);
+        int[] ret = BMUtils.singleNumberAmazing(nums);
+        System.out.println(Arrays.toString(ret));
+    }
 }
