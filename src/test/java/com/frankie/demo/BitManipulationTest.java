@@ -10,7 +10,6 @@ import java.util.Arrays;
  * @author: Yao Frankie
  * @date: 2020/3/17 22:03
  */
-@SpringBootApplication
 public class BitManipulationTest {
 
     /**

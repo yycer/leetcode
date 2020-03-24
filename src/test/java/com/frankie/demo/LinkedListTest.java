@@ -1,0 +1,33 @@
+package com.frankie.demo;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+/**
+ * @author: Yao Frankie
+ * @date: 2020/3/24 22:49
+ */
+@SpringBootTest
+public class LinkedListTest {
+
+    /**
+     * 21. Merge Two Sorted Lists
+     * Input:  1->2->4, 1->3->4
+     * Output: 1->1->2->3->4->4
+     */
+    @Test
+    void p21(){
+        ListNode l11 = new ListNode(1);
+        ListNode l12 = new ListNode(2);
+        ListNode l14 = new ListNode(4);
+        l12.next = l14;
+        l11.next = l12;
+
+        ListNode l21 = new ListNode(1);
+        ListNode l23 = new ListNode(3);
+        ListNode l24 = new ListNode(4);
+        l23.next = l24;
+        l21.next = l23;
+        ListNode ret = LinkedListUtils.mergeTwoSortedLists(l11, l21);
+    }
+}
