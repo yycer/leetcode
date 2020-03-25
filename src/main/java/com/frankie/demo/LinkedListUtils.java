@@ -8,33 +8,41 @@ public class LinkedListUtils {
 
 
     public static ListNode mergeTwoSortedLists(ListNode l1, ListNode l2) {
-        if (l1 == null && l2 == null) {
-            return null;
-        }
-        if (l1 == null) {
-            return l2;
-        }
-        if (l2 == null) {
-            return l1;
-        }
-        ListNode result = new ListNode(0);
-        ListNode prev = result;
-        while (l1 != null && l2 != null) {
-            if (l1.val <= l2.val) {
-                prev.next = l1;
+        ListNode dummyNode = new ListNode(0);
+        ListNode curNode   = dummyNode;
+        while (l1 != null && l2 != null){
+            if (l1.val < l2.val){
+                curNode.next = l1;
                 l1 = l1.next;
             } else {
-                prev.next = l2;
+                curNode.next = l2;
                 l2 = l2.next;
             }
-            prev = prev.next;
+            curNode = curNode.next;
         }
-        if (l1 != null) {
-            prev.next = l1;
+
+        if (l1 != null){
+            curNode.next = l1;
         }
-        if (l2 != null) {
-            prev.next = l2;
+
+        if (l2 != null){
+            curNode.next = l2;
         }
-        return result.next;
+        return dummyNode.next;
+    }
+
+    public static ListNode deleteDuplicates(ListNode head) {
+        if (head == null) return null;
+        ListNode dummyNode = new ListNode(-1);
+        ListNode curNode   = dummyNode;
+
+        while (head != null){
+            if (curNode.val != head.val){
+                curNode.next = head;
+                curNode = curNode.next;
+            }
+            head = head.next;
+        }
+        return dummyNode.next;
     }
 }

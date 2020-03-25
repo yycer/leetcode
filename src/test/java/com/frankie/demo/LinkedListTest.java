@@ -30,4 +30,23 @@ public class LinkedListTest {
         l21.next = l23;
         ListNode ret = LinkedListUtils.mergeTwoSortedLists(l11, l21);
     }
+
+    /**
+     * 83. Remove Duplicates from Sorted List
+     */
+    @Test
+    void p83(){
+        ListNode l1 = new ListNode(1);
+        ListNode l2 = new ListNode(1);
+        ListNode l3 = new ListNode(2);
+        ListNode l4 = new ListNode(3);
+        ListNode l5 = new ListNode(3);
+
+        l4.next = l5;
+        l3.next = l4;
+        l2.next = l3;
+        l1.next = l2;
+        ListNode ret = LinkedListUtils.deleteDuplicates(l1);
+        System.out.println(ret);
+    }
 }
