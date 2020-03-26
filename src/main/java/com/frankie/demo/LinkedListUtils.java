@@ -45,4 +45,38 @@ public class LinkedListUtils {
         }
         return dummyNode.next;
     }
+
+    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) return null;
+        int lenA = getListNodeLength(headA);
+        int lenB = getListNodeLength(headB);
+        int diff = Math.abs(lenA - lenB);
+        if (lenA < lenB){
+            walkDiffStep(headB, diff);
+        } else {
+            walkDiffStep(headA, diff);
+        }
+
+        while (headA != headB){
+            headA = headA.next;
+            headB = headB.next;
+        }
+        return headA;
+    }
+
+    private static int getListNodeLength(ListNode node){
+        int ret = 0;
+        while (node != null){
+            node = node.next;
+            ret++;
+        }
+        return ret;
+    }
+
+    private static void walkDiffStep(ListNode node, int diff){
+        while (diff > 0){
+            node = node.next;
+            diff--;
+        }
+    }
 }

@@ -49,4 +49,26 @@ public class LinkedListTest {
         ListNode ret = LinkedListUtils.deleteDuplicates(l1);
         System.out.println(ret);
     }
+
+    /**
+     * 160. Intersection of Two Linked Lists
+     */
+    @Test
+    void p160(){
+
+        ListNode l1 = new ListNode(4);
+        ListNode l2 = new ListNode(1);
+        ListNode l3 = new ListNode(8);
+        ListNode l4 = new ListNode(4);
+        ListNode l5 = new ListNode(5);
+        l4.next = l5;
+        l3.next = l4;
+        l2.next = l3;
+        l1.next = l2;
+
+        ListNode l8 = new ListNode(8);
+
+        ListNode ret = LinkedListUtils.getIntersectionNode(l8, l1);
+        System.out.println(ret);
+    }
 }
