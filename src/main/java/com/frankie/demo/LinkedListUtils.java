@@ -6,6 +6,19 @@ package com.frankie.demo;
  */
 public class LinkedListUtils {
 
+    public static ListNode head = null;
+
+    public static void addNode(int val){
+        ListNode cur = head;
+        if (cur == null){
+            head = new ListNode(val);
+            return;
+        }
+        while (cur.next != null){
+            cur = cur.next;
+        }
+        cur.next = new ListNode(val);
+    }
 
     public static ListNode mergeTwoSortedLists(ListNode l1, ListNode l2) {
         ListNode dummyNode = new ListNode(0);

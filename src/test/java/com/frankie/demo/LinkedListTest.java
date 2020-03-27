@@ -71,4 +71,13 @@ public class LinkedListTest {
         ListNode ret = LinkedListUtils.getIntersectionNode(l8, l1);
         System.out.println(ret);
     }
+
+    @Test
+    void addNodeTest(){
+        LinkedListUtils.addNode(1);
+        LinkedListUtils.addNode(2);
+        LinkedListUtils.addNode(3);
+        System.out.println(LinkedListUtils.head);
+    }
+
 }
