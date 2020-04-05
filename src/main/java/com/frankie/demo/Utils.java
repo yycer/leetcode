@@ -17,4 +17,9 @@ public class Utils {
         a[i][j] = a[j][i];
         a[j][i] = t;
     }
+
+    public static int climbStairs(int n) {
+        if (n <= 2) return n;
+        return climbStairs(n - 2) + climbStairs(n - 1);
+    }
 }
