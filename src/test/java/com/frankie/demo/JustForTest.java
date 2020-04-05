@@ -20,4 +20,12 @@ public class JustForTest {
         arr[2]  = tmp;
         System.out.println(Arrays.toString(arr));
     }
+
+    @Test
+    void twoDimensionalTest(){
+        int[][] arr = new int[2][3];
+        arr[0] = new int[]{1, 2, 3};
+        arr[1] = new int[]{10, 20, 30};
+        System.out.println(Arrays.toString(arr));
+    }
 }
