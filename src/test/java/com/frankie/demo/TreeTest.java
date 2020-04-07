@@ -35,4 +35,34 @@ public class TreeTest {
 
         TreeUtils.inorderTraversal(t1);
     }
+
+    /**
+     * 113. Path Sum II
+     */
+    @Test
+    void p113(){
+        TreeNode t5 = new TreeNode(5);
+        TreeNode t4 = new TreeNode(4);
+        TreeNode t8 = new TreeNode(8);
+        TreeNode t11 = new TreeNode(11);
+        TreeNode t13 = new TreeNode(13);
+        TreeNode t42 = new TreeNode(42);
+        TreeNode t7 = new TreeNode(7);
+        TreeNode t2 = new TreeNode(2);
+        TreeNode t52 = new TreeNode(52);
+        TreeNode t1 = new TreeNode(1);
+
+        t5.left   = t4;
+        t5.right  = t8;
+        t4.left   = t11;
+        t11.left  = t7;
+        t11.right = t2;
+        t8.left   = t13;
+        t8.right  = t42;
+        t42.left  = t52;
+        t42.right = t1;
+
+        int sum = 22;
+        TreeUtils.pathSum(t5, sum);
+    }
 }

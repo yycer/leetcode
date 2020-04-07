@@ -28,4 +28,23 @@ public class TreeUtils {
 
         return list;
     }
+
+    public static List<List<Integer>> pathSum(TreeNode root, int sum) {
+        List<List<Integer>> retList = new ArrayList<>();
+        doPathSum(root, sum, new ArrayList<>(), retList);
+        return retList;
+    }
+
+    private static void doPathSum(TreeNode root, int sum, ArrayList<Integer> tmpList, List<List<Integer>> retList) {
+        if (root == null) return;
+        tmpList.add(root.val);
+        if (root.left == null && root.right == null && sum == root.val){
+            retList.add(new ArrayList<>(tmpList));
+//            retList.add(tmpList);
+        } else {
+            doPathSum(root.left,  sum - root.val, tmpList, retList);
+            doPathSum(root.right, sum - root.val, tmpList, retList);
+        }
+        tmpList.remove(tmpList.size() - 1);
+    }
 }
