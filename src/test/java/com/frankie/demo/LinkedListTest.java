@@ -80,4 +80,71 @@ public class LinkedListTest {
         System.out.println(LinkedListUtils.head);
     }
 
+
+    @Test
+    void p141(){
+        ListNode l1 = new ListNode(1);
+        ListNode l2 = new ListNode(2);
+        ListNode l3 = new ListNode(3);
+        ListNode l4 = new ListNode(4);
+        ListNode l5 = new ListNode(5);
+        ListNode l6 = new ListNode(6);
+        l6.next = l2;
+        l5.next = l6;
+        l4.next = l5;
+        l3.next = l4;
+        l2.next = l3;
+        l1.next = l2;
+
+        hasCycle(l1);
+    }
+
+    public boolean hasCycle(ListNode head) {
+        ListNode fastNode = head;
+        ListNode slowNode = head;
+
+        while(fastNode != null && fastNode.next != null){
+            fastNode = fastNode.next.next;
+            slowNode = slowNode.next;
+
+            if (fastNode == slowNode){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Test
+    public void dummyNodeChange(){
+        ListNode l1 = new ListNode(1);
+        ListNode l2 = new ListNode(2);
+        ListNode l3 = new ListNode(3);
+        l1.next = l2;
+        l2.next = l3;
+
+        ListNode dummyNode = new ListNode(0);
+        ListNode curNode   = dummyNode;
+
+        dummyNode.next = l1;
+
+        System.out.println(dummyNode);
+        System.out.println(curNode);
+    }
+
+    @Test
+    public void curNodeChange(){
+        ListNode l1 = new ListNode(1);
+        ListNode l2 = new ListNode(2);
+        ListNode l3 = new ListNode(3);
+        l1.next = l2;
+        l2.next = l3;
+
+        ListNode dummyNode = new ListNode(0);
+        ListNode curNode   = dummyNode;
+
+        curNode.next = l1;
+
+        System.out.println(dummyNode);
+        System.out.println(curNode);
+    }
 }
