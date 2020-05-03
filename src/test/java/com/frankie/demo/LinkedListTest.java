@@ -56,19 +56,27 @@ public class LinkedListTest {
     @Test
     void p160(){
 
-        ListNode l1 = new ListNode(4);
-        ListNode l2 = new ListNode(1);
-        ListNode l3 = new ListNode(8);
-        ListNode l4 = new ListNode(4);
-        ListNode l5 = new ListNode(5);
-        l4.next = l5;
-        l3.next = l4;
-        l2.next = l3;
-        l1.next = l2;
+        ListNode l1 = new ListNode(1);
+        ListNode l3 = new ListNode(3);
+        ListNode l6 = new ListNode(6);
+        ListNode l7 = new ListNode(7);
 
-        ListNode l8 = new ListNode(8);
+        l1.next = l3;
+        l3.next = l6;
+        l6.next = l7;
 
-        ListNode ret = LinkedListUtils.getIntersectionNode(l8, l1);
+        ListNode ll2 = new ListNode(2);
+        ListNode ll4 = new ListNode(4);
+        ListNode ll5 = new ListNode(5);
+        ListNode ll6 = new ListNode(6);
+        ListNode ll7 = new ListNode(7);
+
+        ll2.next = ll4;
+        ll4.next = ll5;
+        ll5.next = ll6;
+        ll6.next = ll7;
+
+        ListNode ret = LinkedListUtils.getIntersectionNode(l1, ll2);
         System.out.println(ret);
     }
 
@@ -146,5 +154,22 @@ public class LinkedListTest {
 
         System.out.println(dummyNode);
         System.out.println(curNode);
+    }
+
+
+    /**
+     * 234. Palindrome Linked List
+     */
+    @Test
+    public void p234(){
+        ListNode l1 = new ListNode(1);
+        ListNode ll1 = new ListNode(1);
+        ListNode l2 = new ListNode(2);
+        ListNode lll1 = new ListNode(1);
+        l1.next = ll1;
+        ll1.next = l2;
+        l2.next = lll1;
+        boolean ret = LinkedListUtils.isPalindrome(l1);
+        System.out.println(ret);
     }
 }

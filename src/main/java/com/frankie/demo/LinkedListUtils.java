@@ -92,4 +92,26 @@ public class LinkedListUtils {
             diff--;
         }
     }
+
+    public static boolean isPalindrome(ListNode head) {
+        ListNode node = head;
+        ListNode curNode = head;
+        ListNode reversedNode = null;
+
+        while (curNode != null){
+            ListNode nextNode = curNode.next;
+            curNode.next = reversedNode;
+            reversedNode = curNode;
+            curNode = nextNode;
+        }
+
+        while (head != null){
+            if (head.val != reversedNode.val){
+                return false;
+            }
+            head = head.next;
+            reversedNode = reversedNode.next;
+        }
+        return true;
+    }
 }
